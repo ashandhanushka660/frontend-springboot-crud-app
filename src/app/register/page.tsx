@@ -1,43 +1,64 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default function Register() {
-    const [name, setName] = useState('');
+export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const res = await fetch('http://localhost:8080/api/users/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password }),
-        });
-        if (res.ok) {
-            alert('Registration Successful! 🎉');
+
+        // Render එකේ Live Backend URL එක ලබා ගැනීම
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+        try {
+            // Register API Call එක
+            const response = await fetch(`${API_URL}/api/users/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                alert('Registration Successful! 🎉');
+                router.push('/'); // සාර්ථක වුණාම Login page එකට යැවීම
+            } else {
+                alert('Registration Failed! User may already exist.');
+            }
+        } catch (err) {
+            console.error("Error:", err);
         }
     };
 
     return (
-        <div style={{ textAlign: 'center', padding: '40px', color: '#000000' }}>
-            <h2>Register Form</h2>
-            <form onSubmit={handleRegister}>
-                <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} style={{ padding: '8px', marginBottom: '10px', width: '200px', color: '#000000' }} /><br/>
-                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} style={{ padding: '8px', marginBottom: '10px', width: '200px', color: '#000000' }} /><br/>
-                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} style={{ padding: '8px', marginBottom: '20px', width: '200px', color: '#000000' }} /><br/>
-
-                {/* Register Button එක */}
-                <button type="submit" style={{ padding: '10px 20px', background: '#0070f3', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginRight: '10px' }}>
+        <div style={{ textAlign: 'center', padding: '50px', color: '#000' }}>
+            <h2>Register Page 📝</h2>
+            <form onSubmit={handleRegister} style={{ display: 'inline-block', textAlign: 'left', marginTop: '20px' }}>
+                <div style={{ marginBottom: '10px' }}>
+                    <label>Email: </label><br />
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        style={{ padding: '8px', width: '250px' }}
+                    />
+                </div>
+                <div style={{ marginBottom: '10px' }}>
+                    <label>Password: </label><br />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        style={{ padding: '8px', width: '250px' }}
+                    />
+                </div>
+                <button type="submit" style={{ padding: '10px 20px', background: '#28a745', color: '#fff', border: 'none', cursor: 'pointer', width: '100%' }}>
                     Register
                 </button>
-
-                {/* ළඟින්ම තැබූ Login Button එක */}
-                <Link href="/login">
-                    <button type="button" style={{ padding: '10px 20px', background: '#6c757d', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Go to Login
-                    </button>
-                </Link>
             </form>
         </div>
     );
