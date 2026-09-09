@@ -14,7 +14,6 @@ export default function RegisterPage() {
         const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
         try {
-            // Register API Call එක
             const response = await fetch(`${API_URL}/api/users/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -56,9 +55,16 @@ export default function RegisterPage() {
                         style={{ padding: '8px', width: '250px' }}
                     />
                 </div>
-                <button type="submit" style={{ padding: '10px 20px', background: '#28a745', color: '#fff', border: 'none', cursor: 'pointer', width: '100%' }}>
-                    Register
-                </button>
+
+                {/* Buttons දෙක එක ළඟට (Side-by-side) සකස් කිරීම */}
+                <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                    <button type="submit" style={{ padding: '10px 20px', background: '#28a745', color: '#fff', border: 'none', cursor: 'pointer', flex: 1, borderRadius: '4px' }}>
+                        Register
+                    </button>
+                    <button type="button" onClick={() => router.push('/')} style={{ padding: '10px 20px', background: '#0070f3', color: '#fff', border: 'none', cursor: 'pointer', flex: 1, borderRadius: '4px' }}>
+                        Login
+                    </button>
+                </div>
             </form>
         </div>
     );
