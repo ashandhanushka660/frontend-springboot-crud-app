@@ -1,45 +1,46 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Dashboard() {
-    const [users, setUsers] = useState([]);
+export default function LoginPage() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
 
-    // Backend එකෙන් data (Users list) fetch කරගැනීම
-    useEffect(() => {
-        // Render එකේ Live Backend URL එක ගන්නවා
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-        fetch(`${API_URL}/api/users/`)
-            .then((res) => res.json())
-            .then((data) => setUsers(data))
-            .catch((err) => console.error("Error fetching users:", err));
-    }, []);
+    const handleLogin = (e) => {
+        e.preventDefault();
+        // Login සාර්ථක වුණාම Dashboard එකට යැවීම
+        router.push('/dashboard');
+    };
 
     return (
-        <div style={{ textAlign: 'center', padding: '40px', color: '#000000' }}>
-            <h1>Welcome to User Dashboard! 👋</h1>
-            <h3>All Users List:</h3>
-
-            {/* Table එක හරස් අතට මැදට (Center) ගෙන ඒම */}
-            <table border={1} style={{ margin: '20px auto', width: '70%', borderCollapse: 'collapse', background: 'white' }}>
-                <thead>
-                <tr style={{ background: '#f4f4f4' }}>
-                    <th style={{ padding: '10px', border: '1px solid #ccc' }}>ID</th>
-                    <th style={{ padding: '10px', border: '1px solid #ccc' }}>Name</th>
-                    <th style={{ padding: '10px', border: '1px solid #ccc' }}>Email</th>
-                </tr>
-                </thead>
-                <tbody>
-                {/* Loop එකක් මඟින් backend එකෙන් එන users ලා table එකට දැමීම */}
-                {users.map((user) => (
-                    <tr key={user.id}>
-                        <td style={{ padding: '10px', border: '1px solid #ccc' }}>{user.id}</td>
-                        <td style={{ padding: '10px', border: '1px solid #ccc' }}>{user.name}</td>
-                        <td style={{ padding: '10px', border: '1px solid #ccc' }}>{user.email}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+        <div style={{ textAlign: 'center', padding: '50px', color: '#000' }}>
+            <h2>Login Page 🔐</h2>
+            <form onSubmit={handleLogin} style={{ display: 'inline-block', textAlign: 'left', marginTop: '20px' }}>
+                <div style={{ marginBottom: '10px' }}>
+                    <label>Email: </label><br />
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        style={{ padding: '8px', width: '250px' }}
+                    />
+                </div>
+                <div style={{ marginBottom: '10px' }}>
+                    <label>Password: </label><br />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        style={{ padding: '8px', width: '250px' }}
+                    />
+                </div>
+                <button type="submit" style={{ padding: '10px 20px', background: '#0070f3', color: '#fff', border: 'none', cursor: 'pointer' }}>
+                    Login
+                </button>
+            </form>
         </div>
     );
 }
