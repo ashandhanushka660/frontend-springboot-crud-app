@@ -6,20 +6,24 @@ export default function Dashboard() {
     const [users, setUsers] = useState([]);
     const router = useRouter();
 
+    // Render එකේ Live Backend URL එක ගැනීම
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
     // Users ලා ටික server එකෙන් fetch කරගැනීම
     useEffect(() => {
         fetchUsers();
     }, []);
 
     const fetchUsers = () => {
-        fetch('http://localhost:8080/api/users/')
+        fetch(`${API_URL}/api/users/`)
             .then((res) => res.json())
-            .then((data) => setUsers(data));
+            .then((data) => setUsers(data))
+            .catch((err) => console.error("Error fetching users:", err));
     };
 
     // Delete Function (User කෙනෙක්ව ඉවත් කිරීම)
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:8080/api/users/${id}`, {
+        await fetch(`${API_URL}/api/users/${id}`, {
             method: 'DELETE',
         });
         alert('User Deleted Successfully! 🗑️');
@@ -27,7 +31,7 @@ export default function Dashboard() {
     };
 
     const handleLogout = () => {
-        router.push('/login');
+        router.push('/');
     };
 
     return (
