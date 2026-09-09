@@ -6,9 +6,13 @@ export default function Dashboard() {
 
     // Backend එකෙන් data (Users list) fetch කරගැනීම
     useEffect(() => {
-        fetch('http://localhost:8080/api/users/')
+        // Render එකේ Live Backend URL එක ගන්නවා
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+        fetch(`${API_URL}/api/users/`)
             .then((res) => res.json())
-            .then((data) => setUsers(data));
+            .then((data) => setUsers(data))
+            .catch((err) => console.error("Error fetching users:", err));
     }, []);
 
     return (
