@@ -9,7 +9,7 @@ export default function LoginPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Login සාර්ථක වුණාම Dashboard එකට යැවීම
+        // Login සාර්ථක වුණාම Dashboard එකට යාම
         router.push('/dashboard');
     };
 
@@ -37,7 +37,7 @@ export default function LoginPage() {
                         style={{ padding: '8px', width: '250px' }}
                     />
                 </div>
-                <button type="submit" style={{ padding: '10px 20px', background: '#0070f3', color: '#fff', border: 'none', cursor: 'pointer' }}>
+                <button type="submit" style={{ padding: '10px 20px', background: '#0070f3', color: '#fff', border: 'none', cursor: 'pointer', width: '100%' }}>
                     Login
                 </button>
             </form>
