@@ -9,7 +9,6 @@ export default function LoginPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Login සාර්ථක වුණාම Dashboard එකට යාම
         router.push('/dashboard');
     };
 
@@ -41,6 +40,16 @@ export default function LoginPage() {
                     Login
                 </button>
             </form>
+
+            {/* මෙන්න Register Button එක */}
+            <div style={{ marginTop: '15px' }}>
+                <p>Don't have an account?</p>
+                <button
+                    onClick={() => router.push('/register')}
+                    style={{ padding: '8px 15px', background: '#28a745', color: '#fff', border: 'none', cursor: 'pointer', borderRadius: '4px' }}>
+                    Register 📝
+                </button>
+            </div>
         </div>
     );
 }
