@@ -43,6 +43,7 @@ export default function Dashboard() {
             <h3 style={{ color: '#0070f3', marginBottom: '10px' }}>Welcome to the Admin Dashboard! 🎉</h3>
 
             <h1>User Dashboard (CRUD) 👋</h1>
+            <h2>Welcome to your dashboard!</h2>
             <button onClick={() => router.push('/')} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}>
                 Logout
             </button>
