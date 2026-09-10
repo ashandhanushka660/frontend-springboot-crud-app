@@ -39,7 +39,7 @@ export default function Dashboard() {
 
     return (
         <div style={{ textAlign: 'center', padding: '20px', color: '#000000' }}>
-            {/* Sticky Header - Scroll කළත් උඩම රැඳී පවතී */}
+            {/* Sticky Header */}
             <div style={{
                 position: 'sticky',
                 top: 0,
@@ -61,8 +61,8 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Table Container - පහළට Scroll කළ හැක */}
-            <div style={{ marginTop: '30px' }}>
+            {/* Table Container - Header එක යට වැසී යාම වැළැක්වීමට marginTop වැඩි කර ඇත */}
+            <div style={{ marginTop: '160px' }}>
                 <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
                     <thead>
                     <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
