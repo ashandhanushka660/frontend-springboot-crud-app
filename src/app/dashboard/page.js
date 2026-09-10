@@ -39,7 +39,7 @@ export default function Dashboard() {
 
     return (
         <div style={{ textAlign: 'center', padding: '30px 20px', color: '#000000', backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
-            {/* Header Section - සාමාන්‍ය Flow එකට සකසා ඇත */}
+            {/* Header Section */}
             <div style={{ marginBottom: '30px' }}>
                 <h3 style={{ color: '#0070f3', margin: '0 0 10px 0' }}>Welcome to the Admin Dashboard! 🎉</h3>
                 <h1 style={{ fontSize: '26px', margin: '0 0 15px 0' }}>User Dashboard (CRUD) 👋</h1>
@@ -54,9 +54,18 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Table Section - දැන් Header එකට පහළින් ඉතා ලස්සනට සම්පූර්ණයෙන්ම පෙනේ */}
-            <div>
-                <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+            {/* Responsive Wrapper Box - Table එක වැසී යාම වැළැක්වීමට සහ ස්වයංක්‍රීයව ප්‍රමාණය වෙනස් වීමට */}
+            <div style={{
+                maxWidth: '900px',
+                width: '95%',
+                margin: '0 auto',
+                backgroundColor: 'white',
+                padding: '20px',
+                borderRadius: '8px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                overflowX: 'auto'
+            }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                     <thead>
                     <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
                         <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
