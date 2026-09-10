@@ -38,15 +38,22 @@ export default function Dashboard() {
     };
 
     return (
-        <div style={{ textAlign: 'center', padding: '40px', color: '#000000' }}>
-            {/* අලුතින් එක්කළ Welcome Message එක */}
-            <h3 style={{ color: '#0070f3', marginBottom: '10px' }}>Welcome to the Admin Dashboard! 🎉</h3>
-
-            <h1>User Dashboard (CRUD) 👋</h1>
-            <h2>Welcome to your dashboard!</h2>
-            <button onClick={() => router.push('/')} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}>
-                Logout
-            </button>
+        <div style={{ textAlign: 'center', padding: '20px', color: '#000000' }}>
+            {/* Sticky Header - Scroll කළත් උඩම රැඳී පවතී */}
+            <div style={{
+                position: 'sticky',
+                top: 0,
+                backgroundColor: '#f8f9fa',
+                padding: '15px',
+                zIndex: 1000,
+                boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+            }}>
+                <h3 style={{ color: '#0070f3', margin: '0 0 10px 0' }}>Welcome to the Admin Dashboard! 🎉</h3>
+                <h1 style={{ fontSize: '24px', margin: '0 0 10px 0' }}>User Dashboard (CRUD) 👋</h1>
+                <button onClick={() => router.push('/')} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+                    Logout
+                </button>
+            </div>
 
             <style>{`
                 th, td {
@@ -54,36 +61,39 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
-                <thead>
-                <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
-                    <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
-                    <th style={{ padding: '12px', border: '1px solid #ddd' }}>Name</th>
-                    <th style={{ padding: '12px', border: '1px solid #ddd' }}>Email</th>
-                    <th style={{ padding: '12px', border: '1px solid #ddd' }}>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {users.length > 0 ? (
-                    users.map((user) => (
-                        <tr key={user.id}>
-                            <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.id}</td>
-                            <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.name}</td>
-                            <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.email}</td>
-                            <td style={{ padding: '12px', border: '1px solid #ddd' }}>
-                                <button onClick={() => handleDelete(user.id)} style={{ padding: '6px 12px', background: '#ff4d4d', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-                                    Delete ❌
-                                </button>
-                            </td>
-                        </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="4" style={{ padding: '20px', textAlign: 'center' }}>No users found!</td>
+            {/* Table Container - පහළට Scroll කළ හැක */}
+            <div style={{ marginTop: '30px' }}>
+                <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
+                    <thead>
+                    <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
+                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Name</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Email</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Actions</th>
                     </tr>
-                )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {users.length > 0 ? (
+                        users.map((user) => (
+                            <tr key={user.id}>
+                                <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.id}</td>
+                                <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.name}</td>
+                                <td style={{ padding: '12px', border: '1px solid #ddd' }}>{user.email}</td>
+                                <td style={{ padding: '12px', border: '1px solid #ddd' }}>
+                                    <button onClick={() => handleDelete(user.id)} style={{ padding: '6px 12px', background: '#ff4d4d', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                                        Delete ❌
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="4" style={{ padding: '20px', textAlign: 'center' }}>No users found!</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }
