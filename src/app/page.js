@@ -7,9 +7,27 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        router.push('/dashboard');
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+        try {
+            const res = await fetch(`${API_URL}/api/users/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!res.ok) {
+                alert('Invalid Email or Password!');
+                return;
+            }
+
+            router.push('/dashboard');
+        } catch (error) {
+            console.error('Login failed:', error);
+            alert('Unable to connect to the backend.');
+        }
     };
 
     return (

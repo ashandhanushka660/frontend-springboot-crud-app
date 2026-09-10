@@ -12,17 +12,22 @@ export default function RegisterPage() {
         const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
         // Backend එකේ register API එකට Request එකක් යැවීම
-        const res = await fetch(`${API_URL}/api/users/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
+        try {
+            const res = await fetch(`${API_URL}/api/users/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
 
-        if (res.ok) {
-            alert('Registration Successful! 🎉');
-            router.push('/'); // සාර්ථක නම් Login Page එකට යාම
-        } else {
-            alert('Registration Failed!');
+            if (res.ok) {
+                alert('Registration Successful! 🎉');
+                router.push('/');
+            } else {
+                alert('Registration Failed!');
+            }
+        } catch (error) {
+            console.error('Registration failed:', error);
+            alert('Unable to connect to the backend.');
         }
     };
 

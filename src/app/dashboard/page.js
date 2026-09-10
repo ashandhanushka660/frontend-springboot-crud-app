@@ -12,8 +12,13 @@ export default function Dashboard() {
     }, []);
 
     const fetchUsers = () => {
-        fetch(`${API_URL}/api/users/`)
-            .then((res) => res.json())
+        fetch(`${API_URL}/api/users`)
+            .then(async (res) => {
+                if (!res.ok) {
+                    throw new Error(`Request failed with status ${res.status}`);
+                }
+                return res.json();
+            })
             .then((data) => {
                 if (Array.isArray(data)) {
                     setUsers(data);
