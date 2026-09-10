@@ -54,7 +54,7 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Responsive Wrapper Box - Table එක වැසී යාම වැළැක්වීමට සහ ස්වයංක්‍රීයව ප්‍රමාණය වෙනස් වීමට */}
+            {/* Responsive Wrapper Box - Max Height සහ Scroll එක යෙදීමෙන් Box එක පාලනය කර ඇත */}
             <div style={{
                 maxWidth: '900px',
                 width: '95%',
@@ -63,15 +63,17 @@ export default function Dashboard() {
                 padding: '20px',
                 borderRadius: '8px',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                maxHeight: '400px',
+                overflowY: 'auto',
                 overflowX: 'auto'
             }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                     <thead>
-                    <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
-                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
-                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Name</th>
-                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Email</th>
-                        <th style={{ padding: '12px', border: '1px solid #ddd' }}>Actions</th>
+                    <tr style={{ backgroundColor: '#0070f3', color: 'white', position: 'sticky', top: 0, zIndex: 10 }}>
+                        <th style={{ padding: '12px', border: '1px solid #ddd', backgroundColor: '#0070f3' }}>ID</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd', backgroundColor: '#0070f3' }}>Name</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd', backgroundColor: '#0070f3' }}>Email</th>
+                        <th style={{ padding: '12px', border: '1px solid #ddd', backgroundColor: '#0070f3' }}>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
