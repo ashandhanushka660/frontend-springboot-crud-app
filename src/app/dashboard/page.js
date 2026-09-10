@@ -38,18 +38,11 @@ export default function Dashboard() {
     };
 
     return (
-        <div style={{ textAlign: 'center', padding: '20px', color: '#000000' }}>
-            {/* Sticky Header */}
-            <div style={{
-                position: 'sticky',
-                top: 0,
-                backgroundColor: '#f8f9fa',
-                padding: '15px',
-                zIndex: 1000,
-                boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
-            }}>
+        <div style={{ textAlign: 'center', padding: '30px 20px', color: '#000000', backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+            {/* Header Section - සාමාන්‍ය Flow එකට සකසා ඇත */}
+            <div style={{ marginBottom: '30px' }}>
                 <h3 style={{ color: '#0070f3', margin: '0 0 10px 0' }}>Welcome to the Admin Dashboard! 🎉</h3>
-                <h1 style={{ fontSize: '24px', margin: '0 0 10px 0' }}>User Dashboard (CRUD) 👋</h1>
+                <h1 style={{ fontSize: '26px', margin: '0 0 15px 0' }}>User Dashboard (CRUD) 👋</h1>
                 <button onClick={() => router.push('/')} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
                     Logout
                 </button>
@@ -61,9 +54,9 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Table Container - Gap එක වැඩි කිරීමට marginTop එක 220px දක්වා වැඩි කර ඇත */}
-            <div style={{ marginTop: '220px' }}>
-                <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
+            {/* Table Section - දැන් Header එකට පහළින් ඉතා ලස්සනට සම්පූර්ණයෙන්ම පෙනේ */}
+            <div>
+                <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                     <thead>
                     <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
                         <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
