@@ -54,18 +54,18 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Responsive Wrapper Box - Max Height සහ Scroll එක යෙදීමෙන් Box එක පාලනය කර ඇත */}
+            {/* Clean Scrollable Wrapper Box */}
             <div style={{
                 maxWidth: '900px',
                 width: '95%',
                 margin: '0 auto',
                 backgroundColor: 'white',
-                padding: '20px',
                 borderRadius: '8px',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
                 maxHeight: '400px',
                 overflowY: 'auto',
-                overflowX: 'auto'
+                overflowX: 'auto',
+                position: 'relative'
             }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                     <thead>
