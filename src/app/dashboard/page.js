@@ -39,10 +39,19 @@ export default function Dashboard() {
 
     return (
         <div style={{ textAlign: 'center', padding: '40px', color: '#000000' }}>
+            {/* අලුතින් එක්කළ Welcome Message එක */}
+            <h3 style={{ color: '#0070f3', marginBottom: '10px' }}>Welcome to the Admin Dashboard! 🎉</h3>
+
             <h1>User Dashboard (CRUD) 👋</h1>
             <button onClick={() => router.push('/')} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginBottom: '20px' }}>
                 Logout
             </button>
+
+            <style>{`
+                th, td {
+                    color: #000000 !important;
+                }
+            `}</style>
 
             <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
                 <thead>
