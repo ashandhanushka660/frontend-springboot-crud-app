@@ -61,8 +61,8 @@ export default function Dashboard() {
                 }
             `}</style>
 
-            {/* Table Container - Header එක යට වැසී යාම වැළැක්වීමට marginTop වැඩි කර ඇත */}
-            <div style={{ marginTop: '160px' }}>
+            {/* Table Container - Gap එක වැඩි කිරීමට marginTop එක 220px දක්වා වැඩි කර ඇත */}
+            <div style={{ marginTop: '220px' }}>
                 <table style={{ margin: '0 auto', width: '80%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
                     <thead>
                     <tr style={{ backgroundColor: '#0070f3', color: 'white' }}>
